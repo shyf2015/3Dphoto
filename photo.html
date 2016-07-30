@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3D相册</title>
+	<link rel="stylesheet" href="photo.css">
+</head>
+<body ondragstart='return false' onselectstart='return false'>
+	<div class='box' id='box'>
+		<img class='i1' src="img/01.jpg">
+		<img class='i2' src="img/02.jpg">
+		<img class='i3' src="img/03.jpg">
+		<img class='i4' src="img/04.jpg">
+		<img class='i5' src="img/05.jpg">
+		<img class='i6' src="img/06.jpg">
+		<img class='i7' src="img/07.jpg">
+		<img class='i8' src="img/08.jpg">
+		<img class='i9' src="img/09.jpg">
+		<img class='i0' src="img/10.jpg">
+	</div>
+</body>
+<script>
+	var box=document.getElementById('box');
+	var flag=false,x1,y1,x=0,y=-10;
+	window.onmousedown=function(e){
+		flag=true;
+		x1=e.clientX;
+		y1=e.clientY;
+	}
+	window.onmousemove=function(e){
+		if(flag==true){
+			var x2=e.clientX;
+			var y2=e.clientY;
+			var x_=x2-x1;
+			var y_=y2-y1;
+			x=x+x_*0.2;
+			y=y-y_*0.2;
+			box.style.transform="perspective("+800+"px) rotateX("+y+"deg)"+" rotateY("+x+"deg)";
+			x1=x2;
+			y1=y2;
+		}
+	}
+	window.onmouseup=function(){
+		flag=false;
+	}
+</script>
+</html>
